@@ -1,3 +1,18 @@
+<?php
+    include 'koneksi.php';
+
+    // Menampilkan
+    $query = 'SELECT * FROM tbl_siswa';
+    $sql = mysqli_query($conn, $query);
+
+    $no = 1;
+
+
+    // Menghapus
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +82,7 @@
             <table class="text-white bg-white/10 backdrop-blur-lg mt-5">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Kelas</th>
                         <th>Jurusan</th>
@@ -77,21 +92,38 @@
                 </thead>
                 <tbody>
                     <?php
-                    
+                        while($result = mysqli_fetch_assoc($sql)){
                     ?>
                     <tr>
-                        <td>001</td>
-                        <td>Bagus Subagdja</td>
-                        <td>XI</td>
-                        <td>RPL</td>
-                        <td>Laki-laki</td>
+                        <td>
+                            <?php echo $no++; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['nama']; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['kelas']; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['jurusan']; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['jenis_kelamin']; ?>
+                        </td>
                         <td>
                             <div class="flex gap-2">
+
                                 <a href="ubah_guru.php" class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
-                                <button type="submit" class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></button>
+                            
+
+                                <a href="data_siswa.php?id=<? $result['id_siswa'];?>" type="submit" name="hapus" class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></a>
+
                             </div>
                         </td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

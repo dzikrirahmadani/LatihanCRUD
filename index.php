@@ -1,10 +1,3 @@
-<?php
-include 'functions.php';
-// PHP code.
-
-// Home Page template.
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -54,33 +54,33 @@
                 <div class="">
                     <span>Nama</span>
                     <span class="ml-[34px]">:</span>
-                    <input type="text" name="nama" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="nama" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" required>
                 </div>
 
                 <div class="">
                     <span>Kelas</span>
                     <span class="ml-[22px]">:</span>
-                    <input type="text" name="kelas" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="kelas" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" required>
                 </div>
 
                 <div class="">
                     <span>Jurusan</span>
                     <span class="">:</span>
-                    <input type="text" name="jurusan" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="jurusan" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" required>
                 </div>
 
                 <div class="mt-10 flex">
                     <span>Jenis Kelamin</span>
                     <span class="ml-2">:</span>
-                      <input class="ml-2" type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki">
+                      <input class="ml-2" type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required>
                       <label for="laki-laki">Laki-laki</label><br>
-                      <input class="ml-5" type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
+                      <input class="ml-5" type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required>
                       <label for="perempuan">Perempuan</label><br>
                 </div>
                 
                 <div class="btn mt-5">
                     <input type="submit" value="Kirim" name="kirim" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200"></input>
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</button>
+                    <a href="data_siswa.php" type="submit" class="px-4 py-[6.5px] bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</a>
                 </div>
 
             </form>
@@ -90,7 +90,6 @@
     </glass>
 
 </main>
-
 </body>
 </html>
 
@@ -111,7 +110,8 @@
         $sql = mysqli_query($conn, $query);
 
         if( $sql ){
-            echo "<p class='notif-berhasil absolute w-[500px] top-4 ml-[300px] text-white'>data berhasil ditambahkan !</p>";
+            echo "<p class='notif-berhasil absolute w-[500px] top-4 ml-[300px] text-white shadow-sky-500'>data berhasil ditambahkan !</p>";
+            echo "<script>document.location.href = 'data_siswa.php'</script>";
         }
 
     }
