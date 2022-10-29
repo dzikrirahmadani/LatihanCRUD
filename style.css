@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    box-shadow: -3px 22px 36px -13px rgba(0,0,0,0.10);
+}
+
+.notif-berhasil {
+    animation-name: opacity;
+    transition: 5s ease-in-out;
+}
+
+@keyframe opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
