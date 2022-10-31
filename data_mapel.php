@@ -1,3 +1,15 @@
+<?php
+    include 'koneksi.php';
+
+    // Menampilkan
+    $query_mapel = 'SELECT * FROM tbl_mapel';
+    $sql = mysqli_query($conn, $query_mapel);
+
+    $no = 1;
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,22 +80,30 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama Mapel</th>
-                        <th>Jam Pelajaran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        while($result = mysqli_fetch_assoc($sql)){
+                    ?>
                     <tr>
-                        <td>001</td>
-                        <td>IPA</td>
-                        <td>07.00 - 10.00</td>
+                        <td>
+                            <?php echo $no++; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['nama_mapel']; ?>
+                        </td>
                         <td>
                             <div class="flex gap-2">
-                                <a href="ubah_guru.php" class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
+                                <a href="ubah_mapel.php" class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
                                 <button type="submit" class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></button>
                             </div>
                         </td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

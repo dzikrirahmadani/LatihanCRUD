@@ -2,13 +2,10 @@
     include 'koneksi.php';
 
     // Menampilkan
-    $query = 'SELECT * FROM tbl_siswa';
-    $sql = mysqli_query($conn, $query);
+    $query_siswa = 'SELECT * FROM tbl_siswa';
+    $sql = mysqli_query($conn, $query_siswa);
 
     $no = 1;
-
-
-    // Menghapus
     
 
 ?>

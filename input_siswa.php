@@ -105,9 +105,9 @@
         $jurusan = htmlspecialchars($_POST['jurusan']);
         $jenis_kelamin = htmlspecialchars($_POST['jenis_kelamin']);
 
-        $query = "INSERT INTO tbl_siswa VALUES('', '$nama', '$kelas', '$jurusan', '$jenis_kelamin')";
+        $query_siswa = "INSERT INTO tbl_siswa VALUES('', '$nama', '$kelas', '$jurusan', '$jenis_kelamin')";
 
-        $sql = mysqli_query($conn, $query);
+        $sql = mysqli_query($conn, $query_siswa);
 
         if( $sql ){
             echo "<p class='notif-berhasil absolute w-[500px] top-4 ml-[300px] text-white shadow-sky-500'>data berhasil ditambahkan !</p>";

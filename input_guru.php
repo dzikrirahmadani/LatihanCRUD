@@ -45,34 +45,34 @@
         <h1 class="text-white text-[35px] text-center mt-[150px]">INPUT DATA GURU</h1>
         <div class="form m-auto w-[600px] h-[350px] backdrop-blur-lg bg-slate-500/5 rounded-xl border-[1px] border-slate-500">
             <div class="inputs grid justify-center text-white">
-                <div class="">
-                    <span>ID</span>
-                    <span class="ml-[54px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
-                </div>
+
+            <form action="" method="POST" class="inputs grid justify-center text-white">
 
                 <div class="">
                     <span>Nama</span>
                     <span class="ml-[34px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="nama" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" required>
                 </div>
 
                 <div class="">
                     <span>Mapel</span>
                     <span class="ml-[22px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="mapel" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" required>
                 </div>
 
                 <div class="mt-10 flex">
                     <span>Jam Pelajaran</span>
                     <span class="ml-2">:</span>
-                    <input class="ml-2 px-5 bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none w-[200px]" type="text" name="jam_pelajaran"></input>
+                    <input class="ml-2 px-5 bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none w-[200px]" type="text" name="jam_pelajaran" required></input>
                 </div>
 
                 <div class="btn mt-5">
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200">Kirim</button>
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</button>
+                    <input type="submit" value="Kirim" name="kirim" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200"></input>
+                    <a href="data_siswa.php" type="submit" class="px-4 py-[6.5px] bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</a>
                 </div>
+
+            </form>
+
             </div>
         </div>
 
@@ -81,3 +81,27 @@
 </main>
 </body>
 </html>
+
+<?php
+
+    include "koneksi.php";
+
+    if(isset($_POST['kirim'])){
+
+
+        $nama = htmlspecialchars($_POST['nama']);
+        $mapel = htmlspecialchars($_POST['mapel']);
+        $jam_pelajaran = htmlspecialchars($_POST['jam_pelajaran']);
+
+        $query_guru = "INSERT INTO tbl_guru VALUES('', '$nama', '$mapel', '$jam_pelajaran')";
+
+        $sql = mysqli_query($conn, $query_guru);
+
+        if( $sql ){
+            echo "<p class='notif-berhasil absolute w-[500px] top-4 ml-[300px] text-white shadow-sky-500'>data berhasil ditambahkan !</p>";
+            echo "<script>document.location.href = 'data_guru.php'</script>";
+        }
+
+    }
+
+?>

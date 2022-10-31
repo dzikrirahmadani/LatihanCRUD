@@ -1,3 +1,14 @@
+<?php
+    include 'koneksi.php';
+
+    // Menampilkan
+    $query_guru = 'SELECT * FROM tbl_guru';
+    $sql = mysqli_query($conn, $query_guru);
+
+    $no = 1;
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +40,7 @@
 
         <nav class="fixed z-[10000] top-0 w-[100%] h-[60px] bg-slate-900/50 backdrop-blur-xl bg-transparent border-b-[1px] border-slate-500 rounded-b-[50px]">
             <ul class="flex justify-center items-center h-[100%]">
-                <a href="" class="font-semibold text-white ml-[-200px]">DATA SEKOLAH</a>
+                <a href="" class="font-semibold text-white ml-[-200px]">DATA GURU</a>
                 <li class="px-5 ml-[500px] font-semibold hover:text-sky-500 text-white">
                     <a href="index.php">BERANDA</a>
                 </li>
@@ -56,19 +67,30 @@
             <table class="text-white bg-white/10 backdrop-blur-lg mt-5">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Mapel</th>
-                        <th>Jenis Kelamin</th>
+                        <th>Jam Pelajaran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        while($result = mysqli_fetch_assoc($sql)){
+                    ?>
                     <tr>
-                        <td>001</td>
-                        <td>Bagus Subagdja</td>
-                        <td>IPA</td>
-                        <td>Laki-laki</td>
+                        <td>
+                            <?php echo $no++; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['nama']; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['mapel']; ?>
+                        </td>
+                        <td>
+                            <?php echo $result['jam_pelajaran']; ?>
+                        </td>
                         <td>
                             <div class="flex gap-2">
                                 <a href="ubah_guru.php" class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
@@ -76,6 +98,9 @@
                             </div>
                         </td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
