@@ -93,8 +93,8 @@
                         </td>
                         <td>
                             <div class="flex gap-2">
-                                <a href="ubah_guru.php" class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
-                                <button type="submit" class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></button>
+                                <a href="ubah_guru.php?data=<?=$result['id_guru']?>"class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
+                                <a href="hapus_guru.php?data=<?=$result['id_guru']?>" onclick="return confirm('Apakah yakin ingin menghapus ?');"class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></a>
                             </div>
                         </td>
                     </tr>

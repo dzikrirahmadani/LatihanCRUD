@@ -1,3 +1,43 @@
+<?php
+include 'koneksi.php';
+
+if (isset($_GET['data'])) {
+
+    $id_guru = $_GET['data'];
+
+    $query = "SELECT * FROM tbl_guru WHERE id_guru = '$id_guru'";
+    $sql = mysqli_query($conn, $query);
+    $result = mysqli_fetch_assoc($sql);
+
+    if (isset($_POST['ubah-guru'])) {
+
+        $nama = htmlspecialchars($_POST['nama']);
+        $mapel = htmlspecialchars($_POST['mapel']);
+        $jam_pelajaran = htmlspecialchars($_POST['jam_pelajaran']);
+
+        $query = "UPDATE tbl_guru SET
+                        nama = '$nama',
+                        mapel = '$mapel',
+                        jam_pelajaran = '$jam_pelajaran' WHERE id_guru = '$id_guru'";
+
+        $sql = mysqli_query($conn, $query);
+        if ($sql) {
+            echo "<script>
+                    alert('Data Berhasil Diubah !')
+                    document.location.href = 'data_guru.php';
+                </script>";
+        }else{
+            echo "<script>
+                alert('Data Gagal Diubah !')
+            </script>";
+
+            var_dump(mysqli_error($conn));
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,39 +83,32 @@
         </nav>
 
         <h1 class="text-white text-[35px] text-center mt-[150px]">UBAH DATA GURU</h1>
-        <div class="form m-auto w-[600px] h-[350px] backdrop-blur-lg bg-slate-500/5 rounded-xl border-[1px] border-slate-500">
+        <div class="form m-auto w-[600px] h-[300px] backdrop-blur-lg bg-slate-500/5 rounded-xl border-[1px] border-slate-500">
             <div class="inputs grid justify-center text-white">
-                <div class="">
-                    <span>ID</span>
-                    <span class="ml-[54px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
-                </div>
-
+            <form action="" method="POST">
                 <div class="">
                     <span>Nama</span>
                     <span class="ml-[34px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="nama" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" value="<?=$result['nama']?>" required>
                 </div>
 
                 <div class="">
                     <span>Mapel</span>
                     <span class="ml-[22px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="mapel" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" value="<?=$result['mapel']?>" required>
                 </div>
 
                 <div class="mt-10 flex">
-                    <span>Jenis Kelamin</span>
+                    <span>Jam Pelajaran</span>
                     <span class="ml-2">:</span>
-                    <input class="ml-2" type="radio" id="laki-laki" name="fav_language" value="Laki-laki">
-                      <label for="laki-laki">Laki-laki</label><br>
-                      <input class="ml-5" type="radio" id="perempuan" name="fav_language" value="Perempuan">
-                      <label for="perempuan">Perempuan</label><br>
+                    <input class="ml-2 px-5 bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none w-[200px]" type="text" name="jam_pelajaran" value="<?=$result['jam_pelajaran']?>" required></input>
                 </div>
 
                 <div class="btn mt-5">
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200">Kirim</button>
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</button>
+                    <button name="ubah-guru" type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200">Kirim</button>
+                    <a href="data_guru.php" type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</a>
                 </div>
+            </form>
             </div>
         </div>
 

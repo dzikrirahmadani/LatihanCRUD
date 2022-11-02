@@ -1,3 +1,39 @@
+<?php
+include 'koneksi.php';
+
+if (isset($_GET['data'])) {
+
+    $id_mapel = $_GET['data'];
+
+    $query = "SELECT * FROM tbl_mapel WHERE id_mapel = '$id_mapel'";
+    $sql = mysqli_query($conn, $query);
+    $result = mysqli_fetch_assoc($sql);
+
+    if (isset($_POST['ubah-mapel'])) {
+
+        $nama_mapel = htmlspecialchars($_POST['nama_mapel']);
+
+        $query = "UPDATE tbl_mapel SET
+                        nama_mapel = '$nama_mapel' WHERE id_mapel = '$id_mapel'";
+
+        $sql = mysqli_query($conn, $query);
+        if ($sql) {
+            echo "<script>
+                    alert('Data Berhasil Diubah !')
+                    document.location.href = 'data_mapel.php';
+                </script>";
+        }else{
+            echo "<script>
+                alert('Data Gagal Diubah !')
+            </script>";
+
+            var_dump(mysqli_error($conn));
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,30 +79,20 @@
         </nav>
 
         <h1 class="text-white text-[35px] text-center mt-[190px]">UBAH DATA MATA PELAJARAN</h1>
-        <div class="form m-auto w-[600px] h-[300px] backdrop-blur-lg bg-slate-500/5 rounded-xl border-[1px] border-slate-500">
+        <div class="form m-auto w-[600px] h-[160px] backdrop-blur-lg bg-slate-500/5 rounded-xl border-[1px] border-slate-500">
             <div class="inputs grid justify-center text-white">
-                <div class="">
-                    <span>ID</span>
-                    <span class="ml-[115px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
-                </div>
-
+            <form action="" method="POST">
                 <div class="">
                     <span>Nama Mapel</span>
                     <span class="ml-[34px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
-                </div>
-
-                <div class="">
-                    <span>Jam Pelajaran</span>
-                    <span class="ml-[2px]">:</span>
-                    <input type="text" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5">
+                    <input type="text" name="nama_mapel" class="bg-slate-500/10 rounded-xl border-[1px] border-slate-500 outline-none mt-10 px-5" value="<?=$result['nama_mapel']?>" required>
                 </div>
                 
                 <div class="btn mt-5">
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200">Kirim</button>
-                    <button type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</button>
+                    <button name="ubah-mapel" type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 rounded-lg border-[1px] border-slate-200">Kirim</button>
+                    <a href="data_mapel.php" type="submit" class="px-4 py-1 bg-slate-500/10 hover:bg-white/20 hover:text-slate-900 rounded-lg border-[1px] border-slate-200">Batal</a>
                 </div>
+            </form>
             </div>
         </div>
 

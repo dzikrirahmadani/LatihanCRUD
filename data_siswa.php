@@ -110,10 +110,8 @@
                         <td>
                             <div class="flex gap-2">
 
-                                <a href="ubah_guru.php" class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
-                            
-
-                                <a href="data_siswa.php" type="submit" name="hapus" class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></a>
+                            <a href="ubah_siswa.php?data=<?=$result['id_siswa']?>"class="border-[1px] rounded-md bg-white/10 hover:bg-green-600/90"><img src="img/pen.svg" alt="" width="40"></a>
+                            <a href="hapus_siswa.php?data=<?=$result['id_siswa']?>" onclick="return confirm('Apakah yakin ingin menghapus ?');"class="border-[1px] rounded-md bg-white/10 hover:bg-red-600/90"><img src="img/trash.svg" alt="" width="40"></a>
 
                             </div>
                         </td>
