@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Nov 2022 pada 06.53
+-- Waktu pembuatan: 02 Nov 2022 pada 03.02
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -39,7 +39,8 @@ CREATE TABLE `tbl_guru` (
 --
 
 INSERT INTO `tbl_guru` (`id_guru`, `nama`, `mapel`, `jam_pelajaran`) VALUES
-(3, 'Bagus', 'IPA', '2 Jam');
+(3, 'Bagus', 'INDO', '3 Jam'),
+(6, 'S', 'IPA', '3 Jam');
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,9 @@ CREATE TABLE `tbl_mapel` (
 --
 
 INSERT INTO `tbl_mapel` (`id_mapel`, `nama_mapel`) VALUES
-(2, 'IPA');
+(2, 'IPA'),
+(4, 'B Indo'),
+(5, 'IPS');
 
 -- --------------------------------------------------------
 
@@ -78,8 +81,7 @@ CREATE TABLE `tbl_siswa` (
 --
 
 INSERT INTO `tbl_siswa` (`id_siswa`, `nama`, `kelas`, `jurusan`, `jenis_kelamin`) VALUES
-(36, 'Ahmed Smith', 'XI', 'RPL', 'Laki-laki'),
-(48, 'Khidir Karawita', 'XI', 'RPL', 'Laki-laki');
+(51, 'Ahmed Smith', 'XII', 'RPL', 'Laki-Laki');
 
 --
 -- Indexes for dumped tables
@@ -111,19 +113,19 @@ ALTER TABLE `tbl_siswa`
 -- AUTO_INCREMENT untuk tabel `tbl_guru`
 --
 ALTER TABLE `tbl_guru`
-  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_mapel`
 --
 ALTER TABLE `tbl_mapel`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_siswa`
 --
 ALTER TABLE `tbl_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

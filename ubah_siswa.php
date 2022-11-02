@@ -109,9 +109,9 @@ if (isset($_GET['data'])) {
                 <div class="mt-10 flex">
                     <span>Jenis Kelamin</span>
                     <span class="ml-2">:</span>
-                      <input class="ml-2" type="radio" id="laki-laki" name="jenis_kelamin" value="<?=$result['jenis_kelamin']?>" required>
+                      <input class="ml-2" type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-Laki" required>
                       <label for="laki-laki">Laki-laki</label><br>
-                      <input class="ml-5" type="radio" id="perempuan" name="jenis_kelamin" value="<?=$result['jenis_kelamin']?>" required>
+                      <input class="ml-5" type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required>
                       <label for="perempuan">Perempuan</label><br>
                 </div>
                 

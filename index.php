@@ -1,3 +1,39 @@
+<?php
+include "koneksi.php";
+
+
+// COUNT SISWA
+
+$query="SELECT * FROM tbl_siswa";
+$sql = mysqli_query($conn, $query);
+$result = [];
+while($data = mysqli_fetch_assoc($sql)){
+    $result[] = $data;
+}
+$jumlah_siswa = count($result);
+
+// COUNT GURU
+
+$query="SELECT * FROM tbl_guru";
+$sql = mysqli_query($conn, $query);
+$result = [];
+while($data = mysqli_fetch_assoc($sql)){
+    $result[] = $data;
+}
+$jumlah_guru = count($result);
+
+// COUNT MAPEL
+
+$query="SELECT * FROM tbl_mapel";
+$sql = mysqli_query($conn, $query);
+$result = [];
+while($data = mysqli_fetch_assoc($sql)){
+    $result[] = $data;
+}
+$jumlah_mapel = count($result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,15 +84,15 @@
         <div class="cards flex justify-center gap-[50px] pt-[100px]">
             <a href="data_siswa.php" class="card-1 bg-slate-900/20 w-[300px] h-[30px] border-[1px] border-slate-500/30 rounded-xl backdrop-blur-xl text-white">
                 <h1 class="text-center items-center">Jumlah Siswa</h1>
-                <p class="text-center mt-2">30</p>
+                <p class="text-center mt-2"><?=$jumlah_siswa?></p>
             </a>
             <a href="data_guru.php" class="card-2 bg-slate-900/20 w-[300px] h-[30px] border-[1px] border-slate-500/30 rounded-xl backdrop-blur-xl text-white">
                 <h1 class="text-center items-center">Jumlah Guru</h1>
-                <p class="text-center mt-2">10</p>
+                <p class="text-center mt-2"><?=$jumlah_guru?></p>
             </a>
             <a href="data_mapel.php" class="card-3 bg-slate-900/20 w-[300px] h-[30px] border-[1px] border-slate-500/30 rounded-xl backdrop-blur-xl text-white">
                 <h1 class="text-center items-center">Jumlah Mapel</h1>
-                <p class="text-center mt-2">14</p>
+                <p class="text-center mt-2"><?=$jumlah_mapel?></p>
             </a>
         </div>
     </glass>

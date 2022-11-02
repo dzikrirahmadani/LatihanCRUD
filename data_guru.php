@@ -6,7 +6,6 @@
     $sql = mysqli_query($conn, $query_guru);
 
     $no = 1;
-    
 
 ?>
 <!DOCTYPE html>
